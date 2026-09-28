@@ -1,0 +1,22 @@
+{
+  "name": "telegram-bot-serverless",
+  "tasks": {
+    "dev": "deno run --watch --allow-net --allow-env --allow-read --allow-write --env-file=.env dev-polling.ts",
+    "serve": "deno run --allow-net --allow-env --allow-read --allow-write --env-file=.env main.ts",
+    "webhook:set": "deno run --allow-net --allow-env --env-file=.env set-webhook.ts",
+    "webhook:info": "deno run --allow-net --allow-env --env-file=.env webhook-info.ts",
+    "webhook:delete": "deno run --allow-net --allow-env --env-file=.env delete-webhook.ts",
+    "check": "deno check main.ts dev-polling.ts set-webhook.ts webhook-info.ts delete-webhook.ts"
+  },
+  "imports": {
+    "gramio": "npm:gramio@^0.4.1",
+    "@gramio/auto-answer-callback-query": "npm:@gramio/auto-answer-callback-query@^0.0.2"
+  },
+  "unstable": ["kv", "cron"],
+  "deploy": {
+    "entrypoint": "main.ts"
+  },
+  "compilerOptions": {
+    "strict": true
+  }
+}
