@@ -1,8 +1,9 @@
 import type { Config } from "./types.ts";
+import { env } from "./env.ts";
 
 function need(name: string): string {
-  const v = Deno.env.get(name);
-  if (!v) throw new Error(`Missing required environment variable: ${name}`);
+  const v = env(name);
+  if (!v) throw new Error(`Missing required environment variable: ${name}_2 (or ${name})`);
   return v;
 }
 

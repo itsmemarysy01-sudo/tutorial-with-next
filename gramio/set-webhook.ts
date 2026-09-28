@@ -1,10 +1,12 @@
 // Registers your deployed URL as the bot's permanent address with Telegram.
 //   deno task webhook:set
-const token = Deno.env.get("BOT_TOKEN");
-const secret = Deno.env.get("WEBHOOK_SECRET");
+import { env } from "./env.ts";
+
+const token = env("BOT_TOKEN");
+const secret = env("WEBHOOK_SECRET");
 const publicUrl = Deno.env.get("PUBLIC_URL");
 if (!token || !secret || !publicUrl) {
-  console.error("Set BOT_TOKEN, WEBHOOK_SECRET and PUBLIC_URL in .env first.");
+  console.error("Set BOT_TOKEN_2, WEBHOOK_SECRET_2 and PUBLIC_URL in .env first.");
   Deno.exit(1);
 }
 
